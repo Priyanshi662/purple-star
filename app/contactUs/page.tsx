@@ -4,13 +4,15 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Instagram } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Instagram, ArrowLeft } from "lucide-react"
 import dynamic from "next/dynamic"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/footer"
+import Header from "@/components/Header"
+import Link from "next/link"
 
 // Dynamically import Map component to avoid SSR issues
 const Map = dynamic(() => import("@/components/Map"), { ssr: false })
@@ -34,7 +36,12 @@ export default function ContactPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-    <Navbar/>
+     <Header/>
+        <div className="p-4 h-4">
+        <Link href="/">
+            <ArrowLeft/>
+        </Link>
+        </div>
       {/* Breadcrumbs */}
       <div className="flex items-center gap-2 text-sm mb-8">
         <a href="/" className="text-muted-foreground hover:text-foreground">Home</a>
