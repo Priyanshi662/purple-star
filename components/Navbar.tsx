@@ -31,6 +31,29 @@ export default function Navbar(
         }
     )   
 {
+    const menuitems=[
+      {
+        name:"Home",
+        linkto:"home"
+      },
+      {
+        name:"Shops",
+        linkto:"shop"
+      },
+      {
+        name:"Books",
+        linkto:"book"
+      },
+      {
+        name:"Pages",
+        linkto:"pages"
+      },
+      {
+        name:"Contact Us",
+        linkto:"contact"
+      }
+    ]
+    // const menuitems=["Home","Shops","Books","Pages"];
     const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
     return(
         <>
@@ -47,22 +70,23 @@ export default function Navbar(
             </Link>
         
         <div className="flex flex-row border-none ml-40">
-        <Menubar className="bg-purple-300 shadow-none border-none flex-1 mx-20 ml-40 flex justify-between w-full"> 
-                <MenubarMenu>
-                    <MenubarTrigger className="font-semibold hover:bg-purple-500/50">Home</MenubarTrigger>
-                    <MenubarTrigger className="font-semibold hover:bg-purple-500/50">Shop</MenubarTrigger>
-                    <MenubarTrigger className="font-semibold hover:bg-purple-500/50">Books</MenubarTrigger>
-                    <MenubarTrigger className="font-semibold hover:bg-purple-500/50">Pages</MenubarTrigger>
-                    <Link href="/contactUs">
-                    <MenubarTrigger className="font-semibold hover:bg-purple-500/50">Contact</MenubarTrigger>
-                    </Link>
+        <Menubar className="bg-purple-300 shadow-none border-none flex-1 mx-20 ml-40 flex justify-between w-full "> 
+                <MenubarMenu >
+                  {menuitems.map((item)=>(
+                    <Link href={item.linkto}>
+                      <MenubarTrigger className="font-semibold hover:bg-purple-500/50 cursor-pointer">
+                        {item.name}
+                      </MenubarTrigger>
+                      </Link>
+                  ))
+                  }
                 </MenubarMenu>
             </Menubar>
             </div>
             <div className="flex items-center gap-6 mr-5">
                 <Search className="cursor-pointer hover:text-purple-500"/>
                 <User className="cursor-pointer hover:text-purple-500"/>
-                
+                {/*right side sheet component */}
                 <Sheet>
                 <SheetTrigger>
                     <ShoppingCartIcon className="cursor-pointer hover:text-purple-500"/>
