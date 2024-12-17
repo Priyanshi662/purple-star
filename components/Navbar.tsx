@@ -1,36 +1,22 @@
+"use client"
 import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import { Minus, Plus, Search, ShoppingCartIcon, Trash2, User } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import {
     Sheet,
-    SheetClose,
     SheetContent,
-    SheetDescription,
-    SheetFooter,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet"
-  import { cartItem } from "@/lib/types/cart"
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
+import { useCart } from "@/context/cartContext";
 
-export default function Navbar(
-
-    {   
-        cartItems,
-        removeFromCart,
-        updateQuantity
-    } :
-        {
-            
-            cartItems:cartItem[],
-            removeFromCart: (id:string) =>void,
-            updateQuantity:(id:string, quantity:number) =>void
-        }
-    )   
+export default function Navbar()   
 {
+    const {cartItems, removeFromCart,updateQuantity}= useCart();
     const menuitems=[
       {
         name:"Home",
@@ -73,7 +59,10 @@ export default function Navbar(
         <Menubar className="bg-purple-300 shadow-none border-none flex-1 mx-20 ml-40 flex justify-between w-full "> 
                 <MenubarMenu >
                   {menuitems.map((item)=>(
-                    <Link href={item.linkto}>
+                    <Link 
+                    href={item.linkto}
+                    key={item.name}
+                    >
                       <MenubarTrigger className="font-semibold hover:bg-purple-500/50 cursor-pointer">
                         {item.name}
                       </MenubarTrigger>
@@ -171,32 +160,3 @@ export default function Navbar(
         </>
     )
 }
-
-
-// // components/Navbar.tsx
-// import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
-// import { Card, CardContent } from "@/components/ui/card"
-// import { Button } from "@/components/ui/button"
-// import { Minus, Plus, Trash2 } from "lucide-react"
-// import Link from "next/link"
-// import Image from "next/image"
-
-// export default function Navbar({ cartItems, updateQuantity, removeFromCart }) {
-//   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
-
-//   return (
-//     <Sheet>
-//       <SheetTrigger>
-//         <div className="relative">
-//           <ShoppingCartIcon className="cursor-pointer hover:text-purple-500"/>
-//           {cartItems.length > 0 && (
-//             <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center">
-//               {cartItems.length}
-//             </span>
-//           )}
-//         </div>
-//       </SheetTrigger>
-     
-//     </Sheet>
-//   )
-// }
