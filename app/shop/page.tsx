@@ -7,6 +7,7 @@ import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { useState } from "react"
 import { useCart } from "@/context/cartContext"
+import BackButton from "@/components/backButton"
 
 const products = [
     {
@@ -96,9 +97,12 @@ export default function Shop() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h2 className="text-3xl font-bold text-center mb-8">
+      <div className="flex flex-row gap-x-60">
+      <BackButton title="back" />
+      <h2 className="text-3xl font-bold text-center mb-8 ">
         Stationery Products
       </h2>
+      </div>
 
 <Tabs defaultValue="all" className="w-full mb-10">
   <TabsList className="flex flex-row justify-center gap-2 h-14">

@@ -16,7 +16,7 @@ const sliderData = [
     image: "/images/slider_1.png",
     subtitle: "Autumn / Winter Collection 2024",
     title: "Up to 40% Off Selected Items",
-    link: "#",
+    link: "/shop",
   },
   {
     image: "/images/slider_2.png",

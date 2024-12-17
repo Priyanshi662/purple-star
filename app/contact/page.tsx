@@ -13,9 +13,10 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/footer"
 import Header from "@/components/Header"
 import Link from "next/link"
-
-// Dynamically import Map component to avoid SSR issues
-const Map = dynamic(() => import("@/components/Map"), { ssr: false })
+import BackButton from "@/components/backButton"
+import {Map} from "@/components/Map"
+// // Dynamically import Map component to avoid SSR issues
+// const Map = dynamic(() => import("@/components/Map"), { ssr: false })
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -36,19 +37,7 @@ export default function ContactPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-     <Header/>
-        <div className="p-4 h-4">
-        <Link href="/">
-            <ArrowLeft/>
-        </Link>
-        </div>
-      {/* Breadcrumbs */}
-      <div className="flex items-center gap-2 text-sm mb-8">
-        <a href="/" className="text-muted-foreground hover:text-foreground">Home</a>
-        <span>/</span>
-        <span>Contact</span>
-      </div>
-
+     <BackButton title="Back" className="p-4 h-4 mb-4"variant="outline"/>
       {/* Map */}
       <div className="h-[400px] mb-12 rounded-lg overflow-hidden">
         <Map />
@@ -57,7 +46,7 @@ export default function ContactPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Contact Info */}
         <div className="space-y-8">
-          <Card>
+          <Card className="mb-4">
             <CardContent className="p-6 space-y-6">
               <h1 className="text-3xl font-bold">Contact Us</h1>
               <p className="text-muted-foreground">
@@ -67,11 +56,11 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-red-600" />
-                  <p>(800) 686-6688</p>
+                  <p>+91 9876543211</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-red-600" />
-                  <p>info.purple@gmail.com</p>
+                  <p>support@purplestar.com</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-red-600" />
@@ -91,13 +80,13 @@ export default function ContactPage() {
                 <h2 className="text-xl font-semibold">Follow Us</h2>
                 <div className="flex gap-4">
                   {[
-                    { icon: <Facebook className="h-5 w-5" />, color: "bg-blue-600" },
-                    { icon: <Twitter className="h-5 w-5" />, color: "bg-sky-500" },
-                    { icon: <Instagram className="h-5 w-5" />, color: "bg-pink-600" },
+                    { icon: <Facebook className="h-5 w-5" />, color: "bg-blue-600", link:"purple-star.facebook.com" },
+                    { icon: <Twitter className="h-5 w-5" />, color: "bg-sky-500", link:"purple-star.twitter.com" },
+                    { icon: <Instagram className="h-5 w-5" />, color: "bg-pink-600", link:"purple-star.instagram.com" },
                   ].map((social, index) => (
                     <a
                       key={index}
-                      href="#"
+                      href={social.link}
                       className={`${social.color} p-2 rounded-full text-white hover:opacity-80 transition-opacity`}
                     >
                       {social.icon}
@@ -110,14 +99,14 @@ export default function ContactPage() {
         </div>
 
         {/* Contact Form */}
-        <Card>
+        <Card className="mb-2">
           <CardContent className="p-6">
             <h1 className="text-3xl font-bold mb-4">Get In Touch With Us!</h1>
             <p className="text-muted-foreground mb-6">
               Fill out the form below to receive a free and confidential response.
             </p>
-            
-            {/* <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            {/* onSubmit={form.handleSubmit(onSubmit)} */}
+            <form  className="space-y-4">
               <Input
                 placeholder="Name"
                 {...form.register("name")}
@@ -146,11 +135,10 @@ export default function ContactPage() {
               >
                 Send Message
               </Button>
-            </form> */}
+            </form>
           </CardContent>
         </Card>
       </div>
-      <Footer/>
     </div>
   )
 }
