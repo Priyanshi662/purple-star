@@ -13,6 +13,7 @@ import { cartItem } from "@/lib/types/cart"
 import Header from "@/components/Header"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import BackButton from "@/components/backButton"
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -37,12 +38,7 @@ export default function CheckoutPage() {
 
   return (
     <div >
-        <Header/>
-        <div className="p-4 h-4">
-        <Link href="/">
-            <ArrowLeft/>
-        </Link>
-        </div>
+        <BackButton className="ml-6 p-4 h-4 mt-6" variant="outline" title="Back" />
     <div className="container mx-auto px-4 py-8">
         
       <h1 className="text-3xl font-bold mb-8">Checkout</h1>
