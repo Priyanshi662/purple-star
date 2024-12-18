@@ -99,6 +99,7 @@ export default function Shop() {
     toast({
       title:"Cart Updated",
       description:"Added to cart successfully",
+      duration: 1500
     })
   }
   return (
