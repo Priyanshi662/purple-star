@@ -53,22 +53,18 @@ const benefits = [
   {
     icon: <Truck className="h-8 w-8"/>,
     title: "Free Shipping",
-    description: "Suffered Alteration in Some Form"
   },
   {
     icon: <DollarSign className="h-8 w-8"/>,
     title: "Cash on Delivery",
-    description: "The Internet Tend To Repeat"
   },
   {
     icon: <RotateCcw className="h-8 w-8"/>,
     title: "45 Days Return",
-    description: "Making it Look Like Readable"
   },
   {
     icon: <Clock className="h-8 w-8"/>,
     title: "Opening All Week",
-    description: "8AM - 09PM"
   }
 ];
 
@@ -150,7 +146,6 @@ export default function BestSeller() {
               </div>
               <div>
                 <h3 className="font-semibold uppercase">{benefit.title}</h3>
-                <p className="text-sm text-muted-foreground">{benefit.description}</p>
               </div>
             </CardContent>
           </Card>

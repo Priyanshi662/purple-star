@@ -3,11 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/footer";
-import Navbar from "@/components/Navbar";
 import { CartProvider } from "@/context/cartContext";
 import { AuthProvider } from "./AuthProvider";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import NavbarWrapper from "./NavbarWrapper";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,6 +42,7 @@ export default function RootLayout({
         <Header/>
         <NavbarWrapper/>
         {children}
+        <Toaster/>
         </CartProvider>
         <Footer/>
         </AuthProvider>

@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { useState } from "react"
 import { useCart } from "@/context/cartContext"
 import BackButton from "@/components/backButton"
+import { useToast } from "@/hooks/use-toast"
 
 const products = [
     {
@@ -88,13 +89,18 @@ const categories = [
 ];
 
 export default function Shop() {
-    const {addToCart}= useCart();
+  const {addToCart}= useCart();
   const [activeCategory, setActiveCategory] = useState("all");
-
+  const {toast} = useToast();
   const filteredProducts = products.filter(product => 
     activeCategory === "all" ? true : product.category === activeCategory
   );
-
+  const handleAddToCart=()=>{
+    toast({
+      title:"Cart Updated",
+      description:"Added to cart successfully",
+    })
+  }
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="flex flex-row gap-x-60">
@@ -161,7 +167,7 @@ export default function Shop() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full" variant="outline" onClick={()=>addToCart(product)}>
+                  <Button className="w-full" variant="outline" onClick={()=>{addToCart(product); handleAddToCart()}}>
                     <ShoppingCart className="mr-2 h-4 w-4" />
                     Add to Cart
                   </Button>
