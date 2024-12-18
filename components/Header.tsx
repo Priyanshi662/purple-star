@@ -6,16 +6,19 @@ import React from "react";
 
 export default function Header(){
     return(
-        <div className="flex flex-row p-4 items-center top-0 justify-between h-15 bg-slate-900">
+        <div className="flex flex-row p-4 items-center top-0 justify-between h-15 bg-slate-900 z-[100]">
             <p className="flex text-muted-foreground w-full ">
                 FREE SHIPPING ON ALL ORDERS
             </p>
-            <div className="flex gap-2 z-21">
+            <div className="flex gap-2">
               <NavigationMenu >
                   <NavigationMenuList className="relative ">
                     <NavigationMenuItem>
-                    <NavigationMenuTrigger className="h-8 px-3 text-muted-foreground bg-slate-900">US</NavigationMenuTrigger>
-                    <NavigationMenuContent>
+                    <NavigationMenuTrigger className="h-8 px-3 text-muted-foreground bg-slate-900">
+                      US
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent
+                    >
                     <ul>
                       {["CAD","AUD","EUR","GBP"].map((currency)=>(
                           <ListItem key={currency} className="cursor-pointer border-b pb-4 items-center">
@@ -31,7 +34,9 @@ export default function Header(){
               <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger className="bg-slate-900 text-muted-foreground">English</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="bg-slate-900 text-muted-foreground">
+                      English
+                    </NavigationMenuTrigger>
                     <NavigationMenuContent>
                     <ul>
                       {["French","Italian","German","spanish"].map((language)=>(
@@ -49,7 +54,9 @@ export default function Header(){
               <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger className="bg-slate-900 text-muted-foreground">My account</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="bg-slate-900 text-muted-foreground">
+                      My account
+                    </NavigationMenuTrigger>
                     <NavigationMenuContent>
                     <ul>
                           <ListItem className="cursor-pointer p-2 items-center w-35">

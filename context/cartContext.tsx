@@ -5,8 +5,8 @@ import { cartItem } from "@/lib/types/cart";
 type cartContextType={
     cartItems:cartItem[],
     addToCart: (product : cartItem)=>void,
-    removeFromCart:(id:number)=>void,
-    updateQuantity:(id:number, quantity:number)=>void,
+    removeFromCart:(id:string)=>void,
+    updateQuantity:(id:string, quantity:number)=>void,
     clearCart: ()=>void
 }
 
@@ -34,14 +34,14 @@ export function CartProvider({children}:{children:React.ReactNode}){
                     return newCart
             })
     }
-    const removeFromCart=(id:number)=>{
+    const removeFromCart=(id:string)=>{
         setCartItems(prev=>{
             const newCart=prev.filter(item=>(item.id!==id))
             localStorage.setItem('cartItems',JSON.stringify(newCart))
             return newCart
         })
     }
-    const updateQuantity=(id:number,quantity:number)=>{
+    const updateQuantity=(id:string,quantity:number)=>{
         setCartItems(prev=>{
             const newCart=prev.map(item=>
                 item.id===id ? ({...item,quantity}):item

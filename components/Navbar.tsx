@@ -14,9 +14,10 @@ import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { useCart } from "@/context/cartContext";
 
-export default function Navbar()   
+const Navbar=  ({isAuthenticated}:{isAuthenticated:boolean})   =>
 {
-    const {cartItems, removeFromCart,updateQuantity}= useCart();
+  const {cartItems, removeFromCart,updateQuantity}= useCart();
+
     const menuitems=[
       {
         name:"Home",
@@ -43,7 +44,7 @@ export default function Navbar()
     const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
     return(
         <>
-        <div className="flex flex-row p-4 items-center top-0 sticky justify-between bg-purple-300 z-20">
+        <div className="flex flex-row p-4 items-center top-0 sticky justify-between bg-purple-300 z-40">
             <Link href="/">
             <span className="flex p-4">
                 <h2 className="text-2xl font-bold">
@@ -74,7 +75,21 @@ export default function Navbar()
             </div>
             <div className="flex items-center gap-6 mr-5">
                 <Search className="cursor-pointer hover:text-purple-500"/>
-                <User className="cursor-pointer hover:text-purple-500"/>
+                {
+                  isAuthenticated? 
+                  // redirect to home
+                 (
+                 <Link href="/profile">
+                    <User className="cursor-pointer hover:text-purple-500"/>
+                  </Link>
+                  )
+                    :
+                  (
+                  <Link href="/login">
+                    <User className="cursor-pointer hover:text-purple-500"/>
+                  </Link>
+                  )
+                  }
                 {/*right side sheet component */}
                 <Sheet>
                 <SheetTrigger>
@@ -160,3 +175,5 @@ export default function Navbar()
         </>
     )
 }
+
+export default Navbar;

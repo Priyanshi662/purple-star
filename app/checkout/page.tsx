@@ -10,9 +10,6 @@ import * as z from "zod"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { cartItem } from "@/lib/types/cart"
-import Header from "@/components/Header"
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
 import BackButton from "@/components/backButton"
 
 const formSchema = z.object({

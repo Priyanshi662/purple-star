@@ -1,12 +1,9 @@
 "use client"
-import Header from "../components/Header";
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Banner from "../components/banner";
 import Sale from "@/components/sale";
 import BestSeller from "@/components/bestseller";
 import Blog from "@/components/blog";
-import Footer from "@/components/footer";
 import { useEffect, useState } from "react";
 import { cartItem } from "@/lib/types/cart";
 
@@ -52,7 +49,6 @@ export default function App() {
   
   return (
     <div>
-      
        <Hero/>
        <Banner/>
        <Sale/>

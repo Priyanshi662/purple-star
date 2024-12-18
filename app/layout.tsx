@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Bookings } from "@/components/bookings";
-import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/footer";
 import Navbar from "@/components/Navbar";
 import { CartProvider } from "@/context/cartContext";
+import { AuthProvider } from "./AuthProvider";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import NavbarWrapper from "./NavbarWrapper";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,18 +32,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
+    
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <AuthProvider>
         <CartProvider>
         <Header/>
-        <Navbar/>
+        <NavbarWrapper/>
         {children}
         </CartProvider>
         <Footer/>
+        </AuthProvider>
       </body>
     </html>
   );
