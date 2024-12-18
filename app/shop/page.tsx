@@ -11,7 +11,7 @@ import BackButton from "@/components/backButton"
 
 const products = [
     {
-      id: 1,
+      id: "1",
       name: "Classic Hardcover Notebook",
       price: 15.00,
       originalPrice: 20.00,
@@ -22,7 +22,7 @@ const products = [
       quantity: 1
     },
     {
-      id: 2,
+      id: "2",
       name: "Premium Ballpoint Pen Set",
       price: 10.00,
       originalPrice: null,
@@ -33,7 +33,7 @@ const products = [
       quantity: 1
     },
     {
-      id: 3,
+      id: "3",
       name: "A4 Document Folder",
       price: 5.00,
       originalPrice: null,
@@ -44,7 +44,7 @@ const products = [
       quantity: 1
     },
     {
-      id: 4,
+      id: "4",
       name: "Acrylic Paint Set",
       price: 25.00,
       originalPrice: null,
@@ -55,7 +55,7 @@ const products = [
       quantity: 1
     },
     {
-      id: 5,
+      id: "5",
       name: "Desk Organizer Set",
       price: 30.00,
       originalPrice: null,
@@ -66,7 +66,7 @@ const products = [
       quantity: 1
     },
     {
-      id: 6,
+      id: "6",
       name: "Spiral Notebook",
       price: 8.00,
       originalPrice: 13.00,
